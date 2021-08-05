@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import { useTheme } from '../../utils/ThemeProvider';
 
 import styles from './header.module.scss';
 
 const Header = () => {
+  const { theme } = useTheme();
   return (
-    <header className={styles['header']}>
+    <header
+      className={`${styles['header']} ${
+        theme === 'DEFAULT' ? styles['header--default'] : styles['header--dark']
+      }`}
+    >
       <div className={styles['header__grid']}>
         <div className={styles['header__title']}>
           <Link href='/'>

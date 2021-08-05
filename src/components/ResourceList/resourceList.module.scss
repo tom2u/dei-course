@@ -19,11 +19,13 @@
     transform-origin: center;
     transition: theme.$transition;
 
-    &:hover,
-    &:focus {
-      transform: scale(1.025);
-      color: theme.$primary;
-      box-shadow: 0 0 8px theme.$primary;
+    @include theme.themed() {
+      &:hover,
+      &:focus {
+        transform: scale(1.025);
+        color: theme.t('text');
+        box-shadow: 0 0 8px theme.t('text');
+      }
     }
 
     &-data {
@@ -38,16 +40,21 @@
         padding: 12px;
         display: flex;
         flex-direction: column;
-        color: theme.$primary;
-        background-color: color.scale(theme.$background, $alpha: -10%);
+
+        @include theme.themed() {
+          color: theme.t('text');
+          background-color: color.scale(theme.t('bg'), $alpha: -10%);
+        }
       }
     }
 
     &-button {
       margin-top: auto;
       padding: 8px 12px;
-      color: theme.$background;
-      background-color: theme.$primary;
+      @include theme.themed() {
+        color: theme.t('bg');
+        background-color: theme.t('text');
+      }
     }
   }
 }

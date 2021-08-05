@@ -9,9 +9,10 @@
       width: 100%;
     }
     transition: theme.$transition;
-
-    color: theme.$primary;
-    background-color: theme.$background;
+    @include theme.themed() {
+      color: theme.t('text');
+      background-color: theme.t('bg');
+    }
   }
 
   &__main-content {

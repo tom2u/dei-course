@@ -33,32 +33,34 @@
     margin-left: 8px;
   }
 
-  border: 2px solid theme.$primary;
+  @include theme.themed() {
+    border: 2px solid theme.t('text');
 
-  input {
-    border: 2px solid theme.$primary;
+    input {
+      border: 2px solid theme.t('text');
 
-    background-color: theme.$primary;
-    color: theme.$background;
-    &::placeholder {
-      color: theme.$background;
-    }
-    &:focus {
-      background-color: theme.$background;
-      color: theme.$primary;
+      background-color: theme.t('text');
+      color: theme.t('bg');
       &::placeholder {
-        color: theme.$background;
+        color: theme.t('bg');
+      }
+      &:focus {
+        background-color: theme.t('bg');
+        color: theme.t('text');
+        &::placeholder {
+          color: theme.t('bg');
+        }
       }
     }
-  }
 
-  button {
-    color: theme.$background;
-    background-color: theme.$neutral-400;
-    &:hover,
-    &:active {
-      color: theme.$background;
-      background-color: theme.$primary;
+    button {
+      color: theme.t('bg');
+      background-color: theme.t('hover');
+      &:hover,
+      &:active {
+        color: theme.t('bg');
+        background-color: theme.t('text');
+      }
     }
   }
 }

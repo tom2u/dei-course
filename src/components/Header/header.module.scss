@@ -75,29 +75,32 @@
     outline-offset: 4px;
   }
 
-  .header {
-    &__title-link {
-      color: theme.$primary;
-    }
-
-    &__navlink {
-      color: theme.$primary;
-      background-image: linear-gradient(theme.$primary, theme.$primary);
-
-      &:hover {
-        color: theme.$background;
+  @include theme.themed {
+    .header {
+      &__title-link {
+        color: theme.t('text');
       }
-      &:focus,
-      &:active {
-        color: theme.$background;
-        outline: 1px solid theme.$primary;
-      }
-    }
 
-    &__navlink-active {
-      background-image: linear-gradient(theme.$primary, theme.$primary);
-      color: theme.$background;
-      outline: 1px solid theme.$primary;
+      &__navlink {
+        color: theme.t('text');
+        background-image: linear-gradient(theme.t('text'), theme.t('text'));
+
+        &:hover {
+          color: theme.t('bg');
+        }
+        &:focus,
+        &:active {
+          color: theme.t('bg');
+          outline: 1px solid theme.t('text');
+        }
+      }
+
+      &__navlink-active {
+        background-image: linear-gradient(theme.t('text'), theme.t('text'));
+        color: theme.t('bg');
+        outline: 1px solid theme.t('text');
+      }
     }
   }
+
 }
