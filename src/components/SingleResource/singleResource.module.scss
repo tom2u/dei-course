@@ -1,0 +1,5 @@
+@use '../../styles/theme';
+
+.single-resource {
+  @include theme.wrap-content;
+}

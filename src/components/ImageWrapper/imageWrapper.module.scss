@@ -1,0 +1,24 @@
+@use '../../styles/theme';
+
+.image {
+  &__wrapper {
+    margin: 48px 0;
+    max-width: 100%;
+    min-height: 475px;
+    max-height: 800px;
+    position: relative;
+    text-align: center;
+  }
+
+  &__media-alt {
+    position: absolute;
+    top: 92%;
+    width: 95%;
+    margin: 0 2.5%;
+    padding: 0 24px;
+    text-align: left;
+    color: theme.$background;
+    background-color: theme.$primary;
+    box-shadow: 0 0 12px theme.$primary;
+  }
+}

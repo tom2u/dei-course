@@ -1,0 +1,103 @@
+@use '../../styles/theme';
+
+.header {
+  padding: 16px;
+
+  &__grid {
+    @include theme.wrap-section;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+
+    @include theme.md() {
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-family: theme.$header-font;
+    line-height: 1.3;
+    text-align: center;
+    &-link {
+      font-weight: 700;
+      font-size: clamp(3.5rem, 5.5vw, 8rem);
+    }
+
+    &-byline {
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 2.2vw, 6rem);
+    }
+
+    @include theme.md {
+      text-align: left;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+
+  &__navlink {
+    text-align: center;
+    display: block;
+    padding: 4px 16px;
+    margin: 0 12px;
+    font-size: theme.$header5;
+    background-size: 100% 2%;
+    background-repeat: repeat-x;
+    background-position-y: 100%;
+    transition: theme.$transition;
+    position: relative;
+    &:hover {
+      background-size: 100% 100%, 100% 100%;
+    }
+    &:focus,
+    &:active {
+      background-size: 100% 100%;
+      outline-offset: 4px;
+    }
+  }
+
+  &__navlink-active {
+    text-align: center;
+    display: block;
+    padding: 4px 16px;
+    font-size: theme.$header5;
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+    background-position-y: 100%;
+    position: relative;
+    outline-offset: 4px;
+  }
+
+  .header {
+    &__title-link {
+      color: theme.$primary;
+    }
+
+    &__navlink {
+      color: theme.$primary;
+      background-image: linear-gradient(theme.$primary, theme.$primary);
+
+      &:hover {
+        color: theme.$background;
+      }
+      &:focus,
+      &:active {
+        color: theme.$background;
+        outline: 1px solid theme.$primary;
+      }
+    }
+
+    &__navlink-active {
+      background-image: linear-gradient(theme.$primary, theme.$primary);
+      color: theme.$background;
+      outline: 1px solid theme.$primary;
+    }
+  }
+}

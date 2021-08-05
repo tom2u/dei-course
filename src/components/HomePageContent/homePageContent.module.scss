@@ -1,0 +1,46 @@
+@use '../../styles/theme';
+@use 'sass:color';
+
+.homepageContent {
+  &__section {
+    display: flex;
+    flex-direction: column;
+    white-space: pre-line;
+
+    margin: 72px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &--callout {
+      text-align: center;
+      padding: 48px;
+    }
+  }
+
+  &__text {
+    padding: 0 16px 16px;
+  }
+
+  &__imageWrapper {
+    width: calc(100% - 30px);
+    position: relative;
+    min-height: 450px;
+  }
+
+  .homepageContent {
+    &__section--callout {
+      background-color: theme.$primary;
+      color: theme.$background;
+      outline: 2px solid theme.$primary;
+      outline-offset: 8px;
+    }
+
+    &__imageWrapper {
+      box-shadow: 16px 16px color.scale(theme.$primary, $alpha: -50%);
+    }
+  }
+  video {
+    box-shadow: 16px 16px color.scale(theme.$primary, $alpha: -50%);
+  }
+}

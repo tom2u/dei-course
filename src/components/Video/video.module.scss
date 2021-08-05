@@ -1,0 +1,8 @@
+@use '../../styles/theme';
+
+.video-wrapper {
+  margin: 24px 0;
+  &__video {
+    width: calc(100% - 30px);
+  }
+}

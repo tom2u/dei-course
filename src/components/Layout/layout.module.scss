@@ -1,0 +1,22 @@
+@use '../../styles/theme';
+
+.page {
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    > * {
+      width: 100%;
+    }
+    transition: theme.$transition;
+
+    color: theme.$primary;
+    background-color: theme.$background;
+  }
+
+  &__main-content {
+    @include theme.wrap-section;
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+}
