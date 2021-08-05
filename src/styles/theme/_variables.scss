@@ -16,3 +16,55 @@ $warning: #ffd700;
 $success: #21ff63;
 
 $transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+$bg: 'bg';
+$text: 'text';
+$link: 'link';
+$hover: 'hover';
+$border: 'border';
+$white: 'white';
+$dark: 'dark';
+
+$themes: (
+  default: (
+    bg: $background,
+    text: $primary,
+    link: $neutral-300,
+    hover: $neutral-400,
+    border: $primary,
+    white: $neutral-100,
+    dark: $neutral-700,
+  ),
+  dark: (
+    bg: $background-inverted,
+    text: $primary-inverted,
+    link: $neutral-200,
+    hover: $neutral-300,
+    border: $primary-inverted,
+    white: $neutral-100,
+    dark: $neutral-700,
+  ),
+);
+
+@mixin themed() {
+    @each $theme, $colorMap in $themes {
+      &--#{$theme} {
+        $theme-map: () !global;
+        @each $key, $submap in $colorMap {
+          $value: map-get(map-get($themes, $theme), '#{$key}');
+          $theme-map: map-merge(
+            $theme-map,
+            (
+              $key: $value,
+            )
+          ) !global;
+        }
+        @content;
+        $theme-map: null !global;
+      }
+    }
+  }
+  
+  @function t($key) {
+    @return map-get($theme-map, $key);
+  }

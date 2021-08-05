@@ -1,0 +1,26 @@
+@use '../../styles/theme';
+
+.topbar {
+  color: theme.$primary-inverted;
+  background-color: theme.$background-inverted;
+  padding: 16px;
+
+  &__wrapper {
+    @include theme.wrap-section;
+    display: flex;
+    justify-content: center;
+
+    @include theme.md() {
+      justify-content: flex-end;
+    }
+  }
+
+  button {
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: theme.$primary-inverted;
+    text-decoration: underline;
+  }
+}

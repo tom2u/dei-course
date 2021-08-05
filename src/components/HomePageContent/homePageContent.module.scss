@@ -28,16 +28,18 @@
     min-height: 450px;
   }
 
-  .homepageContent {
-    &__section--callout {
-      background-color: theme.$primary;
-      color: theme.$background;
-      outline: 2px solid theme.$primary;
-      outline-offset: 8px;
-    }
+  @include theme.themed {
+    .homepageContent {
+      &__section--callout {
+        background-color: theme.t('text');
+        color: theme.t('bg');
+        outline: 2px solid theme.t('text');
+        outline-offset: 8px;
+      }
 
-    &__imageWrapper {
-      box-shadow: 16px 16px color.scale(theme.$primary, $alpha: -50%);
+      &__imageWrapper {
+        box-shadow: 16px 16px color.scale(theme.t('text'), $alpha: -50%);
+      }
     }
   }
   video {

@@ -17,8 +17,10 @@
     margin: 0 2.5%;
     padding: 0 24px;
     text-align: left;
-    color: theme.$background;
-    background-color: theme.$primary;
-    box-shadow: 0 0 12px theme.$primary;
+    @include theme.themed() {
+      color: theme.t('bg');
+      background-color: theme.t('text');
+      box-shadow: 0 0 12px theme.t('text');
+    }
   }
 }
