@@ -33,3 +33,11 @@
   width: 92vw;
   margin: 0 auto;
 }
+
+@mixin eng() {
+  font-family: $body-font;
+}
+
+@mixin de() {
+  font-family: $de-body-font;
+}

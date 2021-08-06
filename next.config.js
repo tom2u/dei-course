@@ -1,6 +1,8 @@
+const localesConfig = require("./locales.json");
 module.exports = {
-  target: 'serverless',
+  target: "serverless",
+  i18n: localesConfig,
   options: {
-    dist: 'out_publish',
+    dist: "out_publish",
   },
 };

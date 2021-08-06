@@ -13,6 +13,14 @@ body {
   line-height: 1.75;
 }
 
+html[lang="en-US"] body {
+  @include theme.eng;
+}
+
+html[lang="de"] body {
+  @include theme.de;
+}
+
 html a {
   color: inherit;
   text-decoration: none;
