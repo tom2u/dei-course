@@ -1,6 +1,10 @@
-import Layout from '../../components/Layout';
-import SingleResource from '../../components/SingleResource';
-import { useUser } from '@auth0/nextjs-auth0';
+import Layout from "../../components/Layout";
+import SingleResource from "../../components/SingleResource";
+import { useUser } from "@auth0/nextjs-auth0";
+import {
+  getAllResourceSlugs,
+  getResourceData,
+} from "../../utils/fetch-resources";
 
 const Resource = ({ resourceData }) => {
   const { user, error, isLoading } = useUser();
@@ -16,19 +20,31 @@ const Resource = ({ resourceData }) => {
           {error && <p>{error}</p>}
         </>
       ) : (
-        <>
-          <h2>Single Resource Page</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            ex voluptatem, autem necessitatibus libero voluptates commodi
-            aliquam explicabo laborum quae! Voluptatum placeat nesciunt dolorem
-            itaque, officia obcaecati? Delectus, quibusdam blanditiis.
-          </p>
-          {/* <SingleResource resource={resourceData} /> */}
-        </>
+        <SingleResource resource={resourceData} />
       )}
     </Layout>
   );
+};
+
+// add getStaticPaths
+export const getStaticPaths = ({ locales }) => {
+  const paths = getAllResourceSlugs(locales);
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+// add getStaticProps
+export const getStaticProps = async ({ params, locale }) => {
+  const resourceData = await getResourceData(params.slug, locale);
+
+  return {
+    props: {
+      resourceData,
+    },
+  };
 };
 
 export default Resource;
