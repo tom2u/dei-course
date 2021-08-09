@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import { useTheme } from '../../utils/ThemeProvider';
-import Video from '../Video';
-import styles from './homePageContent.module.scss';
+import Image from "next/image";
+import { useTheme } from "../../utils/ThemeProvider";
+import Video from "../Video";
+import styles from "./homePageContent.module.scss";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -43,10 +43,11 @@ const HomePageContent = () => {
             src="/assets/resource-images/writing-for-accessibility/01-image.jpg"
             layout="fill"
             objectFit="cover"
+            alt="Two people sit at a table working on their laptops"
           />
         </div>
       </section>
-  
+
       <section className={styles["homepageContent__section"]}>
         <div
           className={`${styles["homepageContent__text"]} ${
@@ -67,21 +68,22 @@ const HomePageContent = () => {
             src="/assets/resource-images/DEI-at-work/01-image.jpg"
             layout="fill"
             objectFit="cover"
+            alt="A group of people sit around a conference table talking to each other with their lap tops open"
           />
         </div>
       </section>
-  
+
       <section className={styles["homepageContent__section--callout"]}>
         <div className={styles["homepageContent__text"]}>
           <h2 className={styles["homepageContent__header"]}>
             {t("home:cost:headline")}
           </h2>
-          <h5 className={styles["homepageContent__paragraph"]}>
+          <h3 className={styles["homepageContent__paragraph"]}>
             {t("home:cost:text")}
-          </h5>
+          </h3>
         </div>
       </section>
-  
+
       <section className={styles["homepageContent__section"]}>
         <h2>Learn more about the course.</h2>
         <Video videoSrc="/assets/videos/demo-video.mp4">

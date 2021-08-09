@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "start": "next start"
+    "start": "next start",
+    "test:e2e": "start-server-and-test 'yarn dev' 3000 'yarn cypress open'"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.5.0",
+    "axe-core": "^4.3.2",
+    "cypress-axe": "^0.13.0",
     "gray-matter": "^4.0.3",
     "i18next": "^20.3.5",
     "i18next-browser-languagedetector": "^6.1.2",
@@ -23,6 +26,7 @@
     "remark-parse": "^9.0.0",
     "remark-react": "^8.0.0",
     "sass": "^1.32.8",
+    "start-server-and-test": "^1.13.1",
     "unified": "^9.2.0"
   },
   "devDependencies": {
