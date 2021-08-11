@@ -1,12 +1,11 @@
+import TopBar from "../TopBar";
 import Head from "next/head";
-import { useTheme } from "../../utils/ThemeProvider";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-
 import EmailForm from "../EmailForm";
 import Header from "../Header";
 import Footer from "../Footer";
-import TopBar from "../TopBar";
+import { useTheme } from "../../utils/ThemeProvider";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 import styles from "./layout.module.scss";
 
@@ -18,6 +17,7 @@ const Layout = ({
   ...props
 }) => {
   const { locale, locales, defaultLocale, pathname } = useRouter();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (window) {
@@ -25,13 +25,63 @@ const Layout = ({
     }
   }, [locale]);
 
-  const { theme } = useTheme();
+  const renderLocaleLinks = () => {
+    const links = locales.map((localeName) => {
+      if (defaultLocale.toLowerCase() === localeName.toLowerCase()) {
+        return (
+          <>
+            <link
+              key={localeName}
+              rel="alternate"
+              hrefLang="x-default"
+              href={`${pathname}`}
+            />
+            <meta property="og:locale" content={localeName} />
+          </>
+        );
+      } else {
+        return (
+          <>
+            <link
+              key={localeName}
+              rel="alternate"
+              hrefLang={localeName}
+              href={`/${localeName.toLowerCase()}${pathname}`}
+            />
+            <meta property="og:locale:alternate" content={localeName} />
+          </>
+        );
+      }
+    });
+    return links;
+  };
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <title>pageTitle</title>
+        <title>{pageTitle}</title>
+        <meta
+          name="google-site-verification"
+          content="Ouyuw9dRRd-2HMpK_QGHEvkoh2XkdwHNEAoh4sWGuFo"
+        />
+        <meta name="description" content={description} />
+        <meta property="og:title" content={pageTitle} key="ogtitle" />
+        <meta property="og:type" content="website" key="ogtype" />
+        {previewImage && (
+          <meta property="og:image" content={previewImage} key="ogimage" />
+        )}
+        {typeof window !== "undefined" && (
+          <meta property="og:url" content={window.location.href} key="ogurl" />
+        )}
+        <meta
+          property="og:site_name"
+          content={"DEI and Allyship || A Saga Education Course"}
+          key="ogsitename"
+        />
+        <meta property="og:description" content={description} key="ogdesc" />
+        {renderLocaleLinks()}
       </Head>
       <div
         className={`${styles["page__layout"]} ${

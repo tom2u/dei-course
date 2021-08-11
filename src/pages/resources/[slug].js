@@ -9,11 +9,17 @@ import {
 const Resource = ({ resourceData }) => {
   const { user, error, isLoading } = useUser();
 
+  const metadata = {
+    pageTitle: resourceData?.title || "",
+    description: resourceData?.description || "",
+    previewImage: resourceData?.featuredImage || "",
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
-    <Layout>
+    <Layout {...metadata}>
       {!user || error ? (
         <>
           <h2>You need to be logged in!</h2>

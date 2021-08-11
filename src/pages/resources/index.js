@@ -3,6 +3,12 @@ import ResourceList from "../../components/ResourceList";
 import { useUser } from "@auth0/nextjs-auth0";
 import { getResourceList } from "../../utils/fetch-resources";
 
+const metadata = {
+  pageTitle: "Resources || DEI and Allyship Course",
+  description:
+    "Saga Education's DEI and Allyship course is a free guide to building a more inclusive and equitable product for both your end users and company internally.",
+};
+
 const Resources = ({ resourceList }) => {
   const { user, error, isLoading } = useUser();
 
@@ -11,7 +17,7 @@ const Resources = ({ resourceList }) => {
   }
 
   return (
-    <Layout>
+    <Layout {...metadata}>
       {!user || error ? (
         <>
           <h2>You need to be logged in!</h2>
