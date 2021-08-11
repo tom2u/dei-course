@@ -57,7 +57,7 @@ const generateSitemap = async () => {
           const route = path === "/index" ? "" : `/${localizedRoute}`;
           return `
                   <url>
-                      <loc>${`https://optimistic-panini-ab7f99.netlify.app${route}`}</loc>
+                      <loc>${`https://agitated-tereshkova-dee58f.netlify.app${route}`}</loc>
                   </url>
               `;
         })
