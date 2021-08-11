@@ -61,6 +61,7 @@ const Layout = ({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
+        <meta web_author="tom2u"></meta>
         <title>{pageTitle}</title>
         <meta
           name="google-site-verification"
